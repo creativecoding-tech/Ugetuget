@@ -1,37 +1,92 @@
 
-float cpx1 = 0, cpy1 = 0;
-float speedX = 4; // Arah dan kecepatan X
-float speedY = 4; // Arah dan kecepatan Y
+ArrayList<Curve> curves; // ArrayList untuk menyimpan banyak kurva
+int numberOfCurves = 40; // Jumlah kurva yang ingin dibuat
 
 void setup(){
   fullScreen(P2D);
   background(255);
-  noFill();
-  strokeWeight(9);
-  stroke(255, 102, 0);
   hint(ENABLE_STROKE_PURE);
-  //curve(width, height, width/2, height/2, 0, 0, (width/4), 0);
   smooth();
+
+  // Inisialisasi ArrayList
+  curves = new ArrayList<Curve>();
+
+  // Buat kurva-kurva dengan parameter random
+  for(int i = 0; i < numberOfCurves; i++) {
+    curves.add(new Curve());
+  }
 }
 
 void draw(){
-  createCurve();
+  // Background transparan untuk efek trail
+  fill(255, 25); // Transparansi
+  noStroke();
+  rect(0, 0, width, height);
+
+  // Jalankan semua kurva
+  for(int i = 0; i < curves.size(); i++) {
+    Curve c = curves.get(i);
+    c.run();
+  }
 }
 
-void createCurve(){
-    background(255);
-   curve(cpx1, cpy1, width/2, height/2, 0, 0, 0, cpy1);
-// 1. Update posisi
-  cpx1 += speedX;
-  cpy1 += speedY;
+// Method untuk menambah kurva baru dengan parameter random
+void addRandomCurve() {
+  curves.add(new Curve());
+}
 
-  // 2. Cek batas X (Kanan atau Kiri)
-  if (cpx1 > width || cpx1 < 0) {
-    speedX *= -1; // Balikkan arah (positif jadi negatif, negatif jadi positif)
-  }
+// Method untuk menambah kurva dengan parameter spesifik
+void addCurve(float x, float y, float sx, float sy, float r, float g, float b, float sw, int mode) {
+  curves.add(new Curve(x, y, sx, sy, r, g, b, sw, mode));
+}
 
-  // 3. Cek batas Y (Atas atau Bawah)
-  if (cpy1 > height || cpy1 < 0) {
-    speedY *= -1; // Balikkan arah
+// Method untuk menghapus semua kurva
+void clearCurves() {
+  curves.clear();
+  background(255);
+}
+
+// Method untuk menghapus kurva terakhir
+void removeLastCurve() {
+  if(curves.size() > 0) {
+    curves.remove(curves.size() - 1);
   }
+}
+
+// Keyboard controls
+void keyPressed() {
+  if(key == 'a' || key == 'A') {
+    addRandomCurve(); // Tambah kurva random
+  }
+  else if(key == 'c' || key == 'C') {
+    clearCurves(); // Hapus semua kurva
+  }
+  else if(key == 'r' || key == 'R') {
+    clearCurves(); // Reset
+    for(int i = 0; i < numberOfCurves; i++) {
+      curves.add(new Curve());
+    }
+  }
+  else if(key == 'd' || key == 'D') {
+    removeLastCurve(); // Hapus kurva terakhir
+  }
+  else if(key == '+') {
+    // Tambah 5 kurva
+    for(int i = 0; i < 5; i++) {
+      addRandomCurve();
+    }
+  }
+  else if(key == '-') {
+    // Hapus 5 kurva
+    for(int i = 0; i < 5 && curves.size() > 0; i++) {
+      removeLastCurve();
+    }
+  }
+}
+
+// Mouse click untuk menambah kurva di posisi mouse
+void mousePressed() {
+  curves.add(new Curve(mouseX, mouseY, random(-8, 8), random(-8, 8),
+                      random(255), random(255), random(255),
+                      random(1, 15), floor(random(1, 5))));
 }
