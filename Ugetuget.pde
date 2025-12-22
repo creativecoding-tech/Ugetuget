@@ -88,5 +88,5 @@ void keyPressed() {
 void mousePressed() {
   curves.add(new Curve(mouseX, mouseY, random(-8, 8), random(-8, 8),
                       random(255), random(255), random(255),
-                      15,random(0,50), floor(random(1, 5))));
+                      10,random(0,50), floor(random(1, 5))));
 }
