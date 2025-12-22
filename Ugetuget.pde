@@ -1,6 +1,6 @@
 
 ArrayList<Curve> curves; // ArrayList untuk menyimpan banyak kurva
-int numberOfCurves = 40; // Jumlah kurva yang ingin dibuat
+int numberOfCurves = 45; // Jumlah kurva yang ingin dibuat
 
 void setup(){
   fullScreen(P2D);
@@ -88,5 +88,5 @@ void keyPressed() {
 void mousePressed() {
   curves.add(new Curve(mouseX, mouseY, random(-8, 8), random(-8, 8),
                       random(255), random(255), random(255),
-                      random(1, 15), floor(random(1, 5))));
+                      15, floor(random(1, 5))));
 }
