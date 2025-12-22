@@ -15,7 +15,7 @@ class Curve {
     r = random(255);
     g = random(255);
     b = random(255);
-    strokeWeightValue = random(1, 19);
+    strokeWeightValue = random(1, 10);
     strokeAlphaValue = random(25,60);
     mode = floor(random(1, 5)); // Pilih mode 1, 2, atau 3
   }
@@ -69,7 +69,6 @@ class Curve {
       case 3:
         // Kurva ke kanan bawah
         curve(cpx1, cpy1, width/2, height/2, width, height, 0, 0);
-        //curve(cpx1, cpy1, width/2, height/2, width, height/2, width-cpx1, height-cpy1);
         break;
      case 4:
         //Kurva ke kiri bawah

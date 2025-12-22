@@ -1,6 +1,6 @@
 
 ArrayList<Curve> curves; // ArrayList untuk menyimpan banyak kurva
-int numberOfCurves = 45; // Jumlah kurva yang ingin dibuat
+int numberOfCurves = 79; // Jumlah kurva yang ingin dibuat
 
 void setup(){
   fullScreen(P2D);
