@@ -51,12 +51,12 @@ class Curve {
   void display() {
     noFill();
     strokeWeight(strokeWeightValue);
-    stroke(r, g, b);
+    stroke(r, g, b,60);
 
     // Berbagai mode kurva
     switch(mode) {
       case 1:
-        // Kurva asli (ke kiri atas)
+        // Kurva ke kiri atas
         curve(cpx1, cpy1, width/2, height/2, 0, 0, 0, cpy1);
         break;
       case 2:
@@ -64,8 +64,9 @@ class Curve {
         curve(cpx1, cpy1, width/2, height/2, width, 0, width, cpy1);
         break;
       case 3:
-        // Kurva lingkaran dari tengah
-        curve(cpx1, cpy1, width/2, height/2, width, height/2, width-cpx1, height-cpy1);
+        // Kurva ke kanan bawah
+        curve(cpx1, cpy1, width/2, height/2, width, height, 0, 0);
+        //curve(cpx1, cpy1, width/2, height/2, width, height/2, width-cpx1, height-cpy1);
         break;
      case 4:
         //Kurva ke kiri bawah
