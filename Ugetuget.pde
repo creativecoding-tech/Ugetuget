@@ -19,7 +19,7 @@ void setup(){
 
 void draw(){
   // Background transparan untuk efek trail
-  fill(255, 15); // Transparansi
+  fill(0, 15); // Transparansi
   noStroke();
   rect(0, 0, width, height);
 
