@@ -4,6 +4,7 @@ class Curve {
   float r, g, b;
   float strokeWeightValue;
   int mode; // 1: kurva ke kiri atas, 2: variasi lain
+  float strokeAlphaValue;
 
   // Constructor dengan parameter random
   Curve() {
@@ -14,12 +15,13 @@ class Curve {
     r = random(255);
     g = random(255);
     b = random(255);
-    strokeWeightValue = random(1, 15);
+    strokeWeightValue = random(1, 19);
+    strokeAlphaValue = random(25,60);
     mode = floor(random(1, 5)); // Pilih mode 1, 2, atau 3
   }
 
   // Constructor dengan parameter spesifik
-  Curve(float x, float y, float sx, float sy, float red, float green, float blue, float sw, int m) {
+  Curve(float x, float y, float sx, float sy, float red, float green, float blue, float sw, float sa, int m) {
     cpx1 = x;
     cpy1 = y;
     speedX = sx;
@@ -28,6 +30,7 @@ class Curve {
     g = green;
     b = blue;
     strokeWeightValue = sw;
+    strokeAlphaValue = sa;
     mode = m;
   }
 
@@ -51,7 +54,7 @@ class Curve {
   void display() {
     noFill();
     strokeWeight(strokeWeightValue);
-    stroke(r, g, b,60);
+    stroke(r, g, b,strokeAlphaValue);
 
     // Berbagai mode kurva
     switch(mode) {

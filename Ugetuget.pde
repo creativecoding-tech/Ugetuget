@@ -36,8 +36,8 @@ void addRandomCurve() {
 }
 
 // Method untuk menambah kurva dengan parameter spesifik
-void addCurve(float x, float y, float sx, float sy, float r, float g, float b, float sw, int mode) {
-  curves.add(new Curve(x, y, sx, sy, r, g, b, sw, mode));
+void addCurve(float x, float y, float sx, float sy, float r, float g, float b, float sw,float sa, int mode) {
+  curves.add(new Curve(x, y, sx, sy, r, g, b, sw, sa, mode));
 }
 
 // Method untuk menghapus semua kurva
@@ -88,5 +88,5 @@ void keyPressed() {
 void mousePressed() {
   curves.add(new Curve(mouseX, mouseY, random(-8, 8), random(-8, 8),
                       random(255), random(255), random(255),
-                      15, floor(random(1, 5))));
+                      15,random(0,50), floor(random(1, 5))));
 }
