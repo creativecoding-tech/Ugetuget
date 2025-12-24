@@ -13,7 +13,12 @@ void setup(){
 
   // Buat kurva-kurva dengan parameter random
   for(int i = 0; i < numberOfCurves; i++) {
-    curves.add(new Curve());
+    Curve curv = new Curve();
+    if(curv.mode == 5 || curv.mode == 6){
+     curv.speedX = random(-30,30);
+     curv.speedY = random(-30,30);
+    }
+    curves.add(curv);
   }
 }
 
@@ -88,5 +93,5 @@ void keyPressed() {
 void mousePressed() {
   curves.add(new Curve(mouseX, mouseY, random(-8, 8), random(-8, 8),
                       random(255), random(255), random(255),
-                      10,random(0,50), floor(random(1, 5))));
+                      10,random(0,50), floor(random(1, 7))));
 }

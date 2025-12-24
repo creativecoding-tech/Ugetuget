@@ -17,7 +17,7 @@ class Curve {
     b = random(255);
     strokeWeightValue = random(1, 10);
     strokeAlphaValue = random(25,60);
-    mode = floor(random(1, 5)); // Pilih mode 1, 2, atau 3
+    mode = floor(random(1, 7)); // Pilih mode 1, 2, atau 3
   }
 
   // Constructor dengan parameter spesifik
@@ -74,6 +74,14 @@ class Curve {
         //Kurva ke kiri bawah
         curve(cpx1, cpy1, width/2, height/2, 0, height, 0, 0);
         break;
+     case 5:
+       //Kurva ke atas
+        curve(cpx1, cpy1, width/2, height/2, width/2, 0, cpx1, height);
+        break;
+     case 6:
+       //Kurva ke bawah
+        curve(cpx1, cpy1, width/2, height/2, width/2, height, width, height);
+        break;        
     }
   }
 
